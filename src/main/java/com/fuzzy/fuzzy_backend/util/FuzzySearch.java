@@ -2,7 +2,7 @@ package com.fuzzy.fuzzy_backend.util;
 
 public class FuzzySearch {
     /*
-    * This method calculates the edit distance between two strings.
+    * This method calculates the edit distance between two strings with Damerau-Levenshtein Distance Calculation.
     * The edit distance is the number of operations required to transform one string into the other.
     * The operations are insertion, deletion, substitution, and transposition.
     * The method returns true if the edit distance is less than or equal to the threshold value.
