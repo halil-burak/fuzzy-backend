@@ -2,6 +2,7 @@ package com.fuzzy.fuzzy_backend.service;
 
 import com.fuzzy.fuzzy_backend.model.Product;
 import com.fuzzy.fuzzy_backend.repository.ProductRepository;
+import com.fuzzy.fuzzy_backend.util.FuzzySearch;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
@@ -90,7 +91,7 @@ public class ProductService {
     public List<Product> searchProducts(String searchTerm) {
         System.out.println("Searching products with term: " + searchTerm);
         return productRepository.findAll().stream()
-                .filter(product -> product.getName().equalsIgnoreCase(searchTerm))
+                .filter(product -> FuzzySearch.isSimilar(product.getName(), searchTerm))
                 .collect(Collectors.toList());
     }
 
