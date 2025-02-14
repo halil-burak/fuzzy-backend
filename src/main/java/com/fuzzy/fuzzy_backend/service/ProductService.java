@@ -105,4 +105,15 @@ public class ProductService {
         System.out.println("Adding product: " + product.toString());
         return productRepository.save(product);
     }
+
+    public Product updateProduct(String id, Product product) {
+        Product existingProduct = productRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + id));
+
+        existingProduct.setName(product.getName());
+        existingProduct.setCategory(product.getCategory());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setImageUrl(product.getImageUrl());
+        return productRepository.update(existingProduct);
+    }
 }

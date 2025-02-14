@@ -55,4 +55,11 @@ public class ProductController {
         ResponseSchema.ApiResponse<List<Product>> response = new ResponseSchema.ApiResponse<>("success", products, null, "Products retrieved successfully");
         return ResponseEntity.ok(response);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseSchema.ApiResponse<Product>> updateProduct(@PathVariable String id, @Valid @RequestBody Product product) {
+        Product updatedProduct = productService.updateProduct(id, product);
+        ResponseSchema.ApiResponse<Product> response = new ResponseSchema.ApiResponse<>("success", updatedProduct, null, "Product updated successfully");
+        return ResponseEntity.ok(response);
+    }
 }

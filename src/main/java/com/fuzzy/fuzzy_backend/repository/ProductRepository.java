@@ -27,4 +27,9 @@ public class ProductRepository {
         productStore.put(product.getId(), product);
         return product;
     }
+
+    public Product update(Product product) {
+        productStore.put(product.getId(), product);
+        return product;
+    }
 }
